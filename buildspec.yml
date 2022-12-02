@@ -1,0 +1,15 @@
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region ca-central-1 | docker login --username AWS --password-stdin 061643832920.dkr.ecr.ca-central-1.amazonaws.com
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - docker build -t web-test .
+      - docker tag web-test:latest 061643832920.dkr.ecr.ca-central-1.amazonaws.com/web-test:latest
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push 061643832920.dkr.ecr.ca-central-1.amazonaws.com/web-test:latest
