@@ -15,5 +15,7 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 061643832920.dkr.ecr.ca-central-1.amazonaws.com/web-test:latest
+      - echo Writing image definitions file...
+      - printf '[{"name":"yasuo-build-test","imageUri":"%s"}]' 061643832920.dkr.ecr.ca-central-1.amazonaws.com/web-test:latest > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
