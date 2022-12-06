@@ -16,8 +16,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-           Let's run
-          <code className={styles.code}>pages/index.js</code>
+           deploy twice
         </p>
 
         <div className={styles.grid}>
